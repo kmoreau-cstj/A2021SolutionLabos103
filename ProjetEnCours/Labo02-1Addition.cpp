@@ -1,6 +1,6 @@
 // But : Demander à l'utilisateur deux nombres entiers et le programme calcule et 
 //		 affiche le résultat de la somme des deux nombres
-// Auteur : Karine Moreau 
+// Auteur : Karine Moreau ;-)
 // Date : 2021-08-30
 
 #include <iostream>		// iostream contient la commande cout. 
