@@ -20,7 +20,7 @@ void main()
 	// 2. donner un nom à la variable : ne doit pas commencer par un chiffre, ne doit pas contenir des espaces
 	//					On prendre l'habitude de commencer par une minuscule et les autres mots avec une Majsucule
 
-
+	// TODO : Déclaration des variables
 	// On déclare deux variables de type entier qui vont prendre 4 octets chacune en mémoire vive
 	int premierNombre;
 	int deuxiemeNombre;
@@ -34,6 +34,8 @@ void main()
 	// On va vérifier le contenu de la variable : on peut l'afficher à l'écran
 	//std::cout << premierNombre;
 
+
+	// KM : Saisir un entier
 	std::cout << "Veuillez entrer un deuxième nombre entier : ";
 	// Il va falloir mettre les touches tapées sur le clavier dans la mémoire de l'ordinateur
 	std::cin >> deuxiemeNombre;
@@ -41,8 +43,10 @@ void main()
 	//std::cout << deuxiemeNombre;
 
 	// On demande au programme de faire l'addition et de mémoriser dans la variable resultat
-	resultat  = premierNombre + deuxiemeNombre;
+	resultat  =  premierNombre + deuxiemeNombre;
 
+
+	// todo : Afficher le résultat
 	// On affiche le résultat à l'écran
 	std::cout << resultat;
 
