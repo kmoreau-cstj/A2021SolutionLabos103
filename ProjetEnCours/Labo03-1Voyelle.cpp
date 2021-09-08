@@ -18,7 +18,7 @@ void main()
    std::cin >> lettre;// Il faut mettre la bonne variable;
 
    // TODO : Si le caractère tapé par l'utilisateur est bien une lettre compris entre a et z (minuscule ou majuscule), alors
-   if (lettre >= 'a' && lettre <= 'z' || lettre >= 'A' && lettre <= 'Z')
+   if (lettre >= 'a' && lettre <= 'z' || lettre >= 'A' && lettre <= 'Z') 
    {
       // TODO : Si la lettre est AEIUOY (minuscule ou majuscule) alors le programme affiche c'est une voyelle
 
