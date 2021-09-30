@@ -17,18 +17,16 @@ double calculerMax(double valeur1, double valeur2, double valeur3)
    return max;
 }
 
-int calculerFactorielle(int nb)
+double calculerFactorielle(int nb)
 {
    // Déclaration des variables dans la fonction : Souvent c'est le résultat de la fonction
-   int factorielle;
+   double factorielle = 1;          // 1, si on le multiplie par un autre nombre, son résultat donnera l'autre nombre
+                                 // 0! donne toujours 1
 
-   for (size_t i = 0; i < length; i++)
+   for (int compteur = 1; compteur <= nb; compteur++)
    {
-
+      factorielle = factorielle * compteur;
    }
-
-
-
 
    return factorielle;
 }

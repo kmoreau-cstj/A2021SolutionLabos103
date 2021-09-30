@@ -17,7 +17,7 @@ int main()
    int nb2;
    int nb3;
 
-
+   /*
    cout << " ====================== Calculer le maximum de trois nombres passés en paramètre à une fonction ================" << endl;
    cout << "Veuillez entrer un nombre : ";
    cin >> nb1;
@@ -27,7 +27,7 @@ int main()
    cin >> nb3;
 
    cout << "le maximum de ces trois nombres est :" << calculerMax(nb1,nb2,nb3 )  << endl;
-
+   */
 
    cout << " ====================== Calculer la factorielle d'un nombre entier positif ================" << endl;
    cout << "Veuillez entrer un nombre : ";
