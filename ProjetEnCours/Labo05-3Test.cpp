@@ -20,7 +20,37 @@ int main()
    int mois;
    int annee;
    int entier;
+   int age;
+   int categorie;
+   const int AGE_MIN = 0;
+   const int AGE_MAX = 122;
+   
 
+
+   cout << " =============== fonction qui retourne la categorie d'un age ================" << endl;
+   age = demanderValeur(AGE_MIN, AGE_MAX,"âge");
+   
+   cout << "La categorie est : " << DeterminerCategorie(age) << endl;
+   
+   categorie= demanderValeur(1, 4, "catégorie");
+
+   while (!(validerCategorieAge(age,categorie)))
+   {
+
+      cout << "erreur la catégorie ne correspond pas à l'age " << endl;
+
+     
+      age = demanderValeur(AGE_MIN, AGE_MAX, "âge");
+
+      age = demanderValeur(AGE_MIN, true, AGE_MAX, false, "âge");
+      
+      categorie = demanderValeur(1, 4, "catégorie");
+
+   }
+
+
+
+   /*
    cout << " =============== fonction qui retourne vrai si le nombre passé en paramètre est pair, sinon elle retourne faux ================" << endl;
    cout << "Veuillez entrer le nombre entier : ";
    cin >> entier;
@@ -33,7 +63,8 @@ int main()
    }
    else
         cout << entier << " est impair" <<endl;
-   
+   */
+
 
 
 
