@@ -16,6 +16,75 @@ int main()
    int nb1;
    int nb2;
    int nb3;
+   int jour;
+   int mois;
+   int annee;
+   int entier;
+   int age;
+   int categorie;
+   const int AGE_MIN = 0;
+   const int AGE_MAX = 122;
+   
+
+
+   cout << " =============== fonction qui retourne la categorie d'un age ================" << endl;
+   age = demanderValeur(AGE_MIN, AGE_MAX,"âge");
+   
+   cout << "La categorie est : " << DeterminerCategorie(age) << endl;
+   
+   categorie= demanderValeur(1, 4, "catégorie");
+
+   while (!(validerCategorieAge(age,categorie)))
+   {
+
+      cout << "erreur la catégorie ne correspond pas à l'age " << endl;
+
+     
+      age = demanderValeur(AGE_MIN, AGE_MAX, "âge");
+
+      age = demanderValeur(AGE_MIN, true, AGE_MAX, false, "âge");
+      
+      categorie = demanderValeur(1, 4, "catégorie");
+
+   }
+
+
+
+   /*
+   cout << " =============== fonction qui retourne vrai si le nombre passé en paramètre est pair, sinon elle retourne faux ================" << endl;
+   cout << "Veuillez entrer le nombre entier : ";
+   cin >> entier;
+
+   // Le programme principal affiche si le nombre est pair ou impair en faisant appel à la fonction
+   if (etrePair(entier))
+   {
+      cout << entier << " est pair"<<endl;
+
+   }
+   else
+        cout << entier << " est impair" <<endl;
+   */
+
+
+
+
+   /*
+   // jour = 30 mois=9 annee=2021 ==> 30 septembre 2021
+   cout << " ====================== fonction qui affiche la date où le mois est écrit en toute lettre ================" << endl;
+   cout << " ====================== la fonction reçoit le numéro du jour, le numéro du mois et l'année ================" << endl;
+   cout << "Veuillez entrer le numéro du jour : ";
+   cin >> jour;
+   cout << "Veuillez entrer le numéro du mois : ";
+   cin >> mois;
+   cout << "Veuillez entrer l'année : ";
+   cin >> annee;
+
+   // l'appel de la fonction pour afficher la date avec le mois en toute lettre
+   cout << "Nous sommes le ";
+   afficherDateLongue(jour, mois, annee);
+   cout << endl;
+   */
+
 
    /*
    cout << " ====================== Calculer le maximum de trois nombres passés en paramètre à une fonction ================" << endl;
@@ -27,14 +96,15 @@ int main()
    cin >> nb3;
 
    cout << "le maximum de ces trois nombres est :" << calculerMax(nb1,nb2,nb3 )  << endl;
-   */
+
+
 
    cout << " ====================== Calculer la factorielle d'un nombre entier positif ================" << endl;
    cout << "Veuillez entrer un nombre : ";
    cin >> nb;
    cout << "La factorielle de "<< nb << " est " << calculerFactorielle(nb)<< endl;
 
-
+   */
 
 
 
