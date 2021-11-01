@@ -60,7 +60,7 @@ int main()
    // On ajoute un étudiant de plus
    cout << "Veuillez entrer la note du nouvel étudiant : ";
    cin >> noteNouvelEtudiant;
-   vecNote.push_back(noteNouvelEtudiant);
+   vecNote.push_back(noteNouvelEtudiant);    // Ajoute la note à la fin du vecteur : crée un nouvelle case à la fin
 
    // On affiche les valeurs contenues dans le vecteur
    for (int i = 0; i < vecNote.size(); i++)
@@ -86,8 +86,9 @@ int main()
    {
       cout << "la note # " << i + 1 << " est " << vecNote.at(i) << endl;
    }
+
  
-   system("pause");
+   system("pause > ecran");
    return 0;
 }
 
