@@ -17,7 +17,7 @@ int main()
 {
    setlocale(LC_ALL, "");
    // Déclaration des constantes
-   const string NOM_FICHIER = "donnees.txt";
+   const string NOM_FICHIER = "Donnees.txt";
   
  
    // Déclarations des variables
