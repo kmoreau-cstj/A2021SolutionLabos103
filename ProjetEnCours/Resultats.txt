@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------------
+                   Résultats du cours de programmation structurée                   
+-------------------------------------------------------------------------------------
+Nom étudiant                       Evaluation 1   Eval 2   Eval 3   TotalRésultats   
+-------------------------------------------------------------------------------------
+Audet Nicole                                 30       30       28      88Succès      
+Boileau Claude                               10       20       30      60Succès      
+Bonhomme Fernand                             30       30       30      90Succès      
+Charron Guy                                   2        2        2       6Échec       
+Dubreuil Lucienne                            30       30       39      99Succès      
+Etienne Luc                                  10       10       10      30Échec       
+Fortin Marie-Noelle                          20       18       18      56Échec       
+Fournier Richard                             20       20       21      61Succès      
+Lalonde Claudine                             15       20       25      60Succès      
+Malouin Jules                                20       10       12      42Échec       
+Maranda Armande                              30       30       38      98Succès      

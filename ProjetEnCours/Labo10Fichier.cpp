@@ -8,6 +8,7 @@
                            // Quand on lit des données dans un fichier, c'est un flux input (in) l'équivalent du cin, qui va du disque dur vers la mémoire
                            // Quand on sauvegarde des données dans un fichier, c'est un flux en sortie (cout), qui va de la mémoire vers le disque dur
 #include <string>
+#include <iomanip>
 
 
 using namespace std;
@@ -18,15 +19,42 @@ int main()
    setlocale(LC_ALL, "");
    // Déclaration des constantes
    const string NOM_FICHIER = "Donnees.txt";
-  
- 
+   const string RESULTAT = "Resultats.txt";
+   const string TITRE = "Résultats du cours de programmation structurée";
+   const string TITRE_COL1 = "Nom étudiant";
+   const string TITRE_COL2 = "Evaluation 1";
+   const string TITRE_COL3 = "Eval 2";
+   const string TITRE_COL4 = "Eval 3";
+   const string TITRE_COL5 = "Total";
+   const string TITRE_COL6 = " Résultats";
+   const string REUSSITE = " Succès";
+   const string PAS_REUSSITE = " Échec";
+
+   const char MOTIF1 = '-';
+   const char MOTIF2 = ' ';
+
+   const int ENTRE_DEUX = 3;
+   const int COL1 = 32;
+   const int COL2 = TITRE_COL2.size() + ENTRE_DEUX ;
+   const int COL3 = TITRE_COL3.size() + ENTRE_DEUX;
+   const int COL4 = TITRE_COL4.size() + ENTRE_DEUX;
+   const int COL5 = TITRE_COL5.size() + ENTRE_DEUX;
+   const int COL6 = TITRE_COL6.size() + ENTRE_DEUX;
+   const int LARGEUR = COL1 + COL2 + COL3 + COL4 + COL5 + COL6;
+   const int NOTE_PASSAGE = 60;
+
+
+
+
    // Déclarations des variables
    ifstream canalEntree;            // if pour input file et stream pour la voie de circulation, une route 
+   ofstream canalSortie;            // of pour output file route pour partir de la mémoire et aller vers le disque dur
    // 4 variables pour lire le contenu du fichier
    string nomEtudiant;
    double examen1;
    double examen2;
    double examenFinal;
+   double total;
 
 
    // Ouvrir un canal entre le fichier situé sur le disque dur et la mémoire qui permet de traiter les informations de façon plus rapide pour permettre
@@ -43,8 +71,39 @@ int main()
       // return, car cela met fin à la fonction mais pas fin au programme. Exit permet de quitter le programme quelque soit l'endroit.
       // On met un code d'erreur pour signaler le type d'erreur : 404 le fichier n'est pas pu s'ouvrir
       system("pause");
-      exit(404);        
+      exit(404);
    }
+
+   canalSortie.open(RESULTAT, ios::out);        // Si le fichier existe déjà il est automatiquement supprimé sans confirmation. 
+                                                // le mode app (pour append) permet d'ajouter à la fin d'un fichier existant.
+   if (!canalSortie)
+   {
+      cerr << "Erreur : Le fichier " << RESULTAT << " n'a pas pu être créé. Vérifiez l'espace disque ou vos droits d'accès." << endl;
+      system("pause");
+      exit(505);
+   }
+
+   // On écrit l'en-tête du fichier resultat
+   /*
+   ----------------------------------------------------------------------------------
+   ............    Résultats du cours de programmation structurée
+   ----------------------------------------------------------------------------------
+   Nom étudiant                        Eval 1    Eval 2    Eval 3     Total Résultats 
+   ----------------------------------------------------------------------------------
+     
+   */
+
+   canalSortie << setfill(MOTIF1) << setw(LARGEUR) << MOTIF1 << endl;
+   canalSortie << setfill(MOTIF2) << setw((LARGEUR - TITRE.size()) / 2) << MOTIF2 << TITRE << setw((LARGEUR - TITRE.size()) / 2) << MOTIF2 << endl;
+   canalSortie << setfill(MOTIF1) << setw(LARGEUR) << MOTIF1 << endl;
+   canalSortie << setfill(MOTIF2) << left  << setw(COL1) << TITRE_COL1;
+   canalSortie << setfill(MOTIF2) << right << setw(COL2) << TITRE_COL2;
+   canalSortie << setfill(MOTIF2) << right << setw(COL3) << TITRE_COL3;
+   canalSortie << setfill(MOTIF2) << right << setw(COL4) << TITRE_COL4;
+   canalSortie << setfill(MOTIF2) << right << setw(COL5) << TITRE_COL5;
+   canalSortie << setfill(MOTIF2) << left  << setw(COL6) << TITRE_COL6 << endl;
+   canalSortie << setfill(MOTIF1) << setw(LARGEUR) << MOTIF1 << endl;
+
 
    // Le fichier est bien ouvert, on continue
    cout << "Tout baigne !!" << endl;
@@ -57,18 +116,30 @@ int main()
    canalEntree >> examen1;
    canalEntree >> examen2;
    canalEntree >> examenFinal;
+   canalEntree.ignore(1, '\n');
+
 
    // Rien nous dit que dans les variables il va y avoir des informations, car le fichier pourrait être vide.
    // Est-ce qu'on a pu lire dans le fichier. Le test est de vérifier si on a pas atteint la fin du fichier. eof : end of file c'est une fonction
 
    while (!canalEntree.eof())
    {
-      cout << "Données lues dans fichier : " << nomEtudiant << " " << examen1 << " " << examen2 << " " << examenFinal << endl;
+      // La tentative de lecture dans le fichier source a réussi, on peut traiter les informations lues
+      //Audet Nicole               			 30.00     30.00     28.00     88.00 Succès 
+      total = examen1 + examen2 + examenFinal;
+      canalSortie << setfill(MOTIF2) << left  << setw(COL1) << nomEtudiant;
+      canalSortie << setfill(MOTIF2) << right << setw(COL2) << examen1;
+      canalSortie << setfill(MOTIF2) << right << setw(COL3) << examen2;
+      canalSortie << setfill(MOTIF2) << right << setw(COL4) << examenFinal;
+      canalSortie << setfill(MOTIF2) << right << setw(COL5) << total;
+      canalSortie << setfill(MOTIF2) << left  << setw(COL6) << ( total >= NOTE_PASSAGE ? REUSSITE : PAS_REUSSITE) << endl;
+        
       // On TENTE de lire l'enregistrement (ligne) suivant
       getline(canalEntree, nomEtudiant, '\t');
       canalEntree >> examen1;
       canalEntree >> examen2;
       canalEntree >> examenFinal;
+      canalEntree.ignore();            // On n'est pas obligé de mettre 1, '\n' car ce sont les valeurs par défaut
    }
    
    cout << "il n'y a plus de données dans le fichier" << endl;
