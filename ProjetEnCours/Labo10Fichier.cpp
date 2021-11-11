@@ -56,10 +56,11 @@ int main()
    double examenFinal;
    double total;
 
-   double moyenne1;
-   double moyenne2;
-   double moyenneFinal;
-   double moyenneTotal;
+   double moyenne1 = 0;
+   double moyenne2 = 0;
+   double moyenneFinal = 0;
+   double moyenneTotal = 0;
+   int nbEtudiant = 0;
 
 
 
@@ -88,6 +89,12 @@ int main()
       system("pause");
       exit(505);
    }
+
+   // On peut formater l'affichage des nombres à virgule avec seulement deux décimales. Par défaut l'affichage est en scientifique e3
+
+   // Il faut d'abord préciser fixed pour que le setprecision indique le nombre de chiffres après la virgule
+   canalSortie << fixed << setprecision(2);
+
 
    // On écrit l'en-tête du fichier resultat
    /*
@@ -141,7 +148,10 @@ int main()
       canalSortie << setfill(MOTIF2) << left  << setw(COL6) << ( total >= NOTE_PASSAGE ? REUSSITE : PAS_REUSSITE) << endl;
 
       // Faire les calculs des moyennes :
-
+      moyenne1 += examen1;
+      moyenne2 += examen2;
+      moyenneFinal = moyenneFinal + examenFinal;
+      nbEtudiant++;
 
 
         
@@ -163,14 +173,23 @@ int main()
    
    */
 
+   // On finit de calculer moyenne car on a la somme pour l'instant
+   if (nbEtudiant >0)
+   {
+      moyenne1 /= nbEtudiant;
+      moyenne2 /= nbEtudiant;
+      moyenneFinal /= nbEtudiant;
+      moyenneTotal = moyenne1 + moyenne2 + moyenneFinal;
+   }
+
    canalSortie << setfill(MOTIF1) << setw(LARGEUR) << MOTIF1 << endl;
    canalSortie << setfill(MOTIF2) << left << setw(COL1) << STAT << endl;
    canalSortie << setfill(MOTIF2) << left << setw(COL1)  << MOYENNE;
    canalSortie << setfill(MOTIF2) << right << setw(COL2) << moyenne1;
    canalSortie << setfill(MOTIF2) << right << setw(COL3) << moyenne2;
    canalSortie << setfill(MOTIF2) << right << setw(COL4) << moyenneFinal;
-   canalSortie << setfill(MOTIF2) << right << setw(COL5) << moyenneTotal;
-
+   canalSortie << setfill(MOTIF2) << right << setw(COL5) << moyenneTotal << endl;
+   canalSortie << setfill(MOTIF1) << setw(LARGEUR) << MOTIF1 << endl;
 
    cout << "il n'y a plus de données dans le fichier" << endl;
 
