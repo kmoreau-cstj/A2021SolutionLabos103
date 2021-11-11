@@ -29,6 +29,9 @@ int main()
    const string TITRE_COL6 = " Résultats";
    const string REUSSITE = " Succès";
    const string PAS_REUSSITE = " Échec";
+   const string STAT = "Statistiques";
+
+   const string MOYENNE = "Moyenne";
 
    const char MOTIF1 = '-';
    const char MOTIF2 = ' ';
@@ -43,9 +46,6 @@ int main()
    const int LARGEUR = COL1 + COL2 + COL3 + COL4 + COL5 + COL6;
    const int NOTE_PASSAGE = 60;
 
-
-
-
    // Déclarations des variables
    ifstream canalEntree;            // if pour input file et stream pour la voie de circulation, une route 
    ofstream canalSortie;            // of pour output file route pour partir de la mémoire et aller vers le disque dur
@@ -55,6 +55,12 @@ int main()
    double examen2;
    double examenFinal;
    double total;
+
+   double moyenne1;
+   double moyenne2;
+   double moyenneFinal;
+   double moyenneTotal;
+
 
 
    // Ouvrir un canal entre le fichier situé sur le disque dur et la mémoire qui permet de traiter les informations de façon plus rapide pour permettre
@@ -133,6 +139,11 @@ int main()
       canalSortie << setfill(MOTIF2) << right << setw(COL4) << examenFinal;
       canalSortie << setfill(MOTIF2) << right << setw(COL5) << total;
       canalSortie << setfill(MOTIF2) << left  << setw(COL6) << ( total >= NOTE_PASSAGE ? REUSSITE : PAS_REUSSITE) << endl;
+
+      // Faire les calculs des moyennes :
+
+
+
         
       // On TENTE de lire l'enregistrement (ligne) suivant
       getline(canalEntree, nomEtudiant, '\t');
@@ -142,9 +153,30 @@ int main()
       canalEntree.ignore();            // On n'est pas obligé de mettre 1, '\n' car ce sont les valeurs par défaut
    }
    
+
+   // Pied de page du fichier de sortie :
+   /*
+   ----------------------------------------------------------------------------------
+   Statistiques
+   Moyenne                              19.73     20.00     23.00     62.73
+----------------------------------------------------------------------------------
+   
+   */
+
+   canalSortie << setfill(MOTIF1) << setw(LARGEUR) << MOTIF1 << endl;
+   canalSortie << setfill(MOTIF2) << left << setw(COL1) << STAT << endl;
+   canalSortie << setfill(MOTIF2) << left << setw(COL1)  << MOYENNE;
+   canalSortie << setfill(MOTIF2) << right << setw(COL2) << moyenne1;
+   canalSortie << setfill(MOTIF2) << right << setw(COL3) << moyenne2;
+   canalSortie << setfill(MOTIF2) << right << setw(COL4) << moyenneFinal;
+   canalSortie << setfill(MOTIF2) << right << setw(COL5) << moyenneTotal;
+
+
    cout << "il n'y a plus de données dans le fichier" << endl;
 
-
+   // A la fin du programme : il faut fermer les fichiers en passant par le canal
+   canalEntree.close();
+   canalSortie.close();
 
 
    
