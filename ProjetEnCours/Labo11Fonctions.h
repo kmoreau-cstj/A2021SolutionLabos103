@@ -66,9 +66,6 @@ struct pourLesCalculs
 };
 
 
-
-
-
 // Lister des prototypes des fonctions
 ifstream ouvrirFichierEnLecture(string nomFichier);
 ofstream ouvrirFichierEnEcriture(string nomFichier);
@@ -76,5 +73,11 @@ void ecrireEnTete(ofstream& canal);
 noteEtudiant lireEnregistrement(ifstream& canal);
 void lireEnregistrement(ifstream& canal, noteEtudiant& etudiantEnCours);
 
-pourLesCalculs faireCalculs(noteEtudiant etudiantEnCours);
+void calculerSomme(noteEtudiant etudiantEnCours, pourLesCalculs& somme);
+
+void calculerMoyenne(pourLesCalculs& moyenne);
+
+
+void ecrireEnregistrement(ofstream& canal, noteEtudiant etudiantEnCours);
+void ecrirePiedDePage(ofstream& canal, pourLesCalculs moyenne);
 

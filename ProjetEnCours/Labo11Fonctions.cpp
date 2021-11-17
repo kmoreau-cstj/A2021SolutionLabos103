@@ -104,16 +104,62 @@ void lireEnregistrement(ifstream& canal, noteEtudiant& etudiantEnCours)
 
 }
 
-pourLesCalculs faireCalculs(noteEtudiant etudiantEnCours)
+void calculerSomme(noteEtudiant etudiantEnCours, pourLesCalculs& somme)
 {
-   pourLesCalculs resultats;
-
-   resultats.total = etudiantEnCours.examen1 + etudiantEnCours.examen2 + etudiantEnCours.examenFinal;
+   somme.total = etudiantEnCours.examen1 + etudiantEnCours.examen2 + etudiantEnCours.examenFinal;
    // Faire les calculs des moyennes :
-   resultats.moyenne1 += etudiantEnCours.examen1;
-   resultats.moyenne2 += etudiantEnCours.examen2;
-   resultats.moyenneFinal = resultats.moyenneFinal + etudiantEnCours.examenFinal;
-   resultats.nbEtudiant++;
+   somme.moyenne1 += etudiantEnCours.examen1;
+   somme.moyenne2 += etudiantEnCours.examen2;
+   somme.moyenneFinal = somme.moyenneFinal + etudiantEnCours.examenFinal;
+   somme.nbEtudiant++;
+    
+}
 
-   return resultats;
+
+
+void calculerMoyenne(pourLesCalculs& moyenne)
+{
+   // On finit de calculer moyenne car on a la somme pour l'instant
+   if (moyenne.nbEtudiant > 0)
+   {
+      moyenne.moyenne1 /= moyenne.nbEtudiant;
+      moyenne.moyenne2 /= moyenne.nbEtudiant;
+      moyenne.moyenneFinal /= moyenne.nbEtudiant;
+      moyenne.moyenneTotal = moyenne.moyenne1 + moyenne.moyenne2 + moyenne.moyenneFinal;
+   }
+}
+
+void ecrireEnregistrement(ofstream& canal, noteEtudiant etudiantEnCours)
+{
+   double total = etudiantEnCours.examen1 + etudiantEnCours.examen2 + etudiantEnCours.examenFinal;
+   canal << setfill(MOTIF2) << left << setw(COL1) << etudiantEnCours.nomEtudiant;
+   canal << setfill(MOTIF2) << right << setw(COL2) << etudiantEnCours.examen1;
+   canal << setfill(MOTIF2) << right << setw(COL3) << etudiantEnCours.examen2;
+   canal << setfill(MOTIF2) << right << setw(COL4) << etudiantEnCours.examenFinal;
+   canal << setfill(MOTIF2) << right << setw(COL5) << total;
+   canal << setfill(MOTIF2) << left << setw(COL6) << (total >= NOTE_PASSAGE ? REUSSITE : PAS_REUSSITE) << endl;
+
+}
+
+void ecrirePiedDePage(ofstream& canal, pourLesCalculs moyenne)
+{
+
+   // Pied de page du fichier de sortie :
+     /*
+     ----------------------------------------------------------------------------------
+     Statistiques
+     Moyenne                              19.73     20.00     23.00     62.73
+   ----------------------------------------------------------------------------------
+
+      */
+
+   canal << setfill(MOTIF1) << setw(LARGEUR) << MOTIF1 << endl;
+   canal << setfill(MOTIF2) << left << setw(COL1) << STAT << endl;
+   canal << setfill(MOTIF2) << left << setw(COL1) << MOYENNE;
+   canal << setfill(MOTIF2) << right << setw(COL2) << moyenne.moyenne1;
+   canal << setfill(MOTIF2) << right << setw(COL3) << moyenne.moyenne2;
+   canal << setfill(MOTIF2) << right << setw(COL4) << moyenne.moyenneFinal;
+   canal << setfill(MOTIF2) << right << setw(COL5) << moyenne.moyenneTotal << endl;
+   canal << setfill(MOTIF1) << setw(LARGEUR) << MOTIF1 << endl;
+
 }
